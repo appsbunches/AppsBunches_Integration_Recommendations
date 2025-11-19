@@ -1,6 +1,6 @@
 # AppsBunches Integration Requirements for Third-Party Services (Zid Merchants)
 
-This document is a guideline for third-party providers who want to integrate their services into apps built using Apps Bunches Mobile App for Zid merchants.
+This document is a guideline for third-party providers who want to integrate their services into [Apps Bunches Mobile App for Zid merchants](https://apps.zid.sa/application/421).
 
 ### Notes To Consider
 
@@ -16,20 +16,38 @@ The SDK communicates with Zid APIs and integrates services seamlessly into the m
 
 ---
 
-## 2. Business Cycle Requirements
+## 2. Minimum Merchant Requirement
 
-### App Information
+To qualify for integration support inside AppsBunches:
+
+* The partner's solution must be active and used by at least 20 merchants currently using AppsBunches mobile apps.
+* This ensures commercial feasibility, operational value, and real adoption.
+
+---
+
+## 3. Mandatory Pre-Approval
+
+Before starting any technical work:
+
+* The partner must contact the AppsBunches Partnerships Team to receive initial approval.
+* Initial approval does NOT guarantee final acceptance—technical validation and compliance reviews will follow.
+
+---
+
+## 4. Business Cycle Requirements
+
+### 4.1 App Information
 
 * Full description of the app and its features
 * App URL in Zid Apps Market
 * Support email and official website (if available)
 
-### Media & Demonstration
+### 4.2 Media & Demonstration
 
 * Introductory video explaining the app's service
 * Clear indication of where the service should appear in the mobile app (e.g., product page, checkout, order success page)
 
-### User Stories
+### 4.3 User Stories
 
 * User story describing how the service works on the Zid web store
 * User story describing how the service should work on Apps Bunches mobile app
@@ -48,16 +66,16 @@ Open the app → Account page → Points widget should appear
 
 ---
 
-## 3. Technical Requirements
+## 5. Technical Requirements
 
-### 3.1 Flutter SDK Development
+### 5.1 Flutter SDK Development
 
 * Developers must build a **Flutter SDK**
 * SDK must include **full usage documentation**
 * SDK must be published on **pub.dev**
 * SDK must support the latest **Flutter stable version**
 
-### 3.2 Initialization & Configuration
+### 5.2 Initialization & Configuration
 
 * SDK must accept initial configuration values in **JSON**
 * SDK must support **sandbox mode** for testing
@@ -79,7 +97,7 @@ Open the app → Account page → Points widget should appear
 }
 ```
 
-### 3.3 SDK Lifecycle
+### 5.3 SDK Lifecycle
 
 1. App fetches JSON configuration from Zid API on launch
 2. Pass JSON to third-party SDK via init method
@@ -90,7 +108,7 @@ Open the app → Account page → Points widget should appear
    * Cart updates
    * Store changes
 
-### 3.4 Integration with Zid APIs
+### 5.4 Integration with Zid APIs
 
 * `GET /api/v1/scripts`
 * `GET /api/v2/catalog/stores/$storeId/layout-setting`
@@ -102,7 +120,7 @@ JSON includes:
 * Colors
 * Any required configuration
 
-### 3.5 Initialization Example
+### 5.5 Initialization Example
 
 ```dart
 APPSDKNAME.init(initialJson: {
@@ -115,15 +133,15 @@ APPSDKNAME.init(initialJson: {
 
 ---
 
-## 4. Optional SDK Features
+## 6. Optional SDK Features
 
-### 4.1 Page Listener
+### 6.1 Page Listener
 
 ```dart
 APPSDKNAME.trackPageRoute(pageName: "wishlist");
 ```
 
-### 4.2 Cart Events (CRUD)
+### 6.2 Cart Events (CRUD)
 
 ```dart
 APPSDKNAME.sendEvent(
@@ -134,7 +152,7 @@ APPSDKNAME.sendEvent(
 );
 ```
 
-### 4.3 UI Widgets
+### 6.3 UI Widgets
 
 ```dart
 Column(
@@ -150,13 +168,13 @@ Column(
 );
 ```
 
-### 4.4 Search Events
+### 6.4 Search Events
 
 ```dart
 List<Products> products = await APPSDKNAME.getProducts(q: 'Search Item');
 ```
 
-### 4.5 Abandoned Cart Events
+### 6.5 Abandoned Cart Events
 
 ```dart
 APPSDKNAME.addCartUpdates(
@@ -167,13 +185,13 @@ APPSDKNAME.addCartUpdates(
 );
 ```
 
-### 4.6 Customer Support Widgets
+### 6.6 Customer Support Widgets
 
 ```dart
 floatingActionButton: APPSDKNAME.showFloatingActionButton();
 ```
 
-### 4.7 Cashback / Exchange / Return Events
+### 6.7 Cashback / Exchange / Return Events
 
 ```dart
 APPSDKNAME.showWidgets();
@@ -189,7 +207,7 @@ You can also develop any type of widgets and functions needed to showcase your s
 
 ---
 
-## 5. Quality Standards
+## 7. Quality Standards
 
 * SDK must not crash the app
 * SDK must not request extra permissions unnecessarily
@@ -199,7 +217,7 @@ You can also develop any type of widgets and functions needed to showcase your s
 
 ---
 
-## 6. Targeted App Categories
+## 8. Targeted App Categories
 
 * Customer Support Apps
 * Marketing Apps
@@ -208,26 +226,14 @@ You can also develop any type of widgets and functions needed to showcase your s
 
 ---
 
-## 7. Notes
+## 9. Business Approval
 
-All examples are illustrative and may be modified based on service requirements.
+Integration testing and a final review meeting must be conducted at the end of the implementation. This ensures that all features are functioning as expected, integration with the AppsBunches mobile app is seamless, and any necessary adjustments can be made before release. The meeting should include a demonstration of key SDK functions, verification of API connectivity, and validation of user experience.
 
 ---
 
 ### Contact Emails
 
+* **Website:** [www.appsbunches.com](https://www.appsbunches.com)
 * **Partnership Email:** [Partnership@appsbunches.com](mailto:Partnership@appsbunches.com)
 * **Support & Development Email:** [Dev@appsbunches.com](mailto:Dev@appsbunches.com)
-
----
-
-## About AppsBunches
-
-(عناقيد التطبيقات)
-Technology company specializing in:
-
-* Mobile app development
-* E-commerce solutions
-* System integrations
-* Zoho customization
-* Digital transformation
